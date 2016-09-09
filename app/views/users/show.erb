@@ -1,0 +1,7 @@
+<h1>USERS SHOW / PROFILE PAGE</h1>
+<h2>get '/users/:id'</h2>
+
+<% if current_user %>
+  <h2>Welcome <%= current_user.username %>!</h2>
+
+<% end %>

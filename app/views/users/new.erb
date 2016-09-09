@@ -1,0 +1,15 @@
+<h1>NEW USER REGISTRATION</h1>
+<!-- Route that to come here. uses get method -->
+
+<h2>get 'users/new'</h2>
+<h2>On submit runs the post /users route</h2>
+
+<!-- post /users route -->
+
+<form action="/users" method="POST">
+  <input type="text" name="user[email]" placeholder="Email:">
+  <input type="text" name="user[username]" placeholder="Username:">
+  <input type="password" name="user[password]" placeholder="Password:">
+  <input type="password" name="password_confirmation" placeholder="Password Confirmation:">
+  <input type="submit" value="Login!">
+</form>
