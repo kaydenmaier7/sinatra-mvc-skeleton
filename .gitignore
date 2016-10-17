@@ -4,6 +4,7 @@ config/database.yml
 db/*.sqlite3
 db/*.sqlite
 db/*.sqlite3-journal
+ruby_runner.rb
 log/*.log
 tmp/
 .sass-cache/
