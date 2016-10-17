@@ -1,6 +1,6 @@
 <% if current_user %>
   <a href="/users/<%= current_user.id %> ">Profile Page</a>
-  <form action="/sessions" method="POST">
+  <form class="center-align" action="/sessions" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Logout">
   </form>
