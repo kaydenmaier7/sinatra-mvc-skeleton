@@ -14,12 +14,12 @@ post '/users' do
       session[:id] = @user.id
       redirect "/users/#{@user.id}"
     else
-      @errors = @user.errors.full_messages
+      @errors = "Something went wrong. Please try again."
       erb :'users/new'
     end
 
   else
-    @errors = ["Passwords do not match!"]
+    @errors = "Passwords do not match!"
     erb :'users/new'
   end
 
