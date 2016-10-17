@@ -12,6 +12,7 @@ tmp/
 coverage
 doc/api
 doc/app
+db/migrate/20161017162549_create_keys.rb
 curriculum/.pygments-cache
 curriculum/public/*
 public/assets
