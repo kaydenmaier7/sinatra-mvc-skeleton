@@ -4,6 +4,11 @@
   padding: 60px;
 }
 
+.center-no-pad {
+  text-align: center;
+  font-size: 2em;
+}
+
 .button {
   margin: 3em auto;
   padding: 1em;
@@ -12,4 +17,10 @@
   border-radius: .5em;
   background-color: lightblue;
   outline: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

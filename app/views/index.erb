@@ -1,10 +1,14 @@
   <header>
     <% if current_user %>
-      <a href="/users/<%= current_user.id %> ">Profile Page</a>
-      <form class="center-align" action="/sessions" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Logout">
-      </form>
+      <div class='center-align'>
+        <a class='button' href="/users/<%= current_user.id %> ">Profile Page</a>
+      </div>
+      <footer class='center-no-pad'>
+          <form class='button' action="/sessions" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Logout">
+          </form>
+      </footer>
     <% else %>
       <div id="nav" class= "center-align">
         <a class="button" href="/sessions/new">Login</a>
