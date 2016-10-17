@@ -2,9 +2,12 @@
 
   <% if @errors %>
     <h2 class='error'><%= @errors %></h2>
+  <% else %>
+    <h3>Please type in your username OR e-mail and password</h3>
   <% end %>
 
   <form action="/sessions" method="POST">
+    <input type="text" name="username" placeholder="Username:">
     <input type="text" name="email" placeholder="Email:">
     <input type="password" name="password" placeholder="Password:">
     <input type="submit" value="Login!">

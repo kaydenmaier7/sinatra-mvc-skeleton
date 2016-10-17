@@ -5,6 +5,9 @@ end
 
 post '/sessions' do
   @user = User.authenticate(params[:email], params[:password])
+  if !@user
+    @user = User.authenticate_by_username(params[:username], params[:password])
+  end
 
   if @user
     login(@user)
