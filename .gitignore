@@ -13,6 +13,7 @@ coverage
 doc/api
 doc/app
 db/migrate/20161017162549_create_keys.rb
+app/models/key.rb
 curriculum/.pygments-cache
 curriculum/public/*
 public/assets
