@@ -1,0 +1,15 @@
+.center-align {
+  text-align: center;
+  font-size: 2em;
+  padding: 60px;
+}
+
+.button {
+  margin: 3em auto;
+  padding: 1em;
+  width: 100%;
+  max-width: 60%;
+  border-radius: .5em;
+  background-color: lightblue;
+  outline: none;
+}
