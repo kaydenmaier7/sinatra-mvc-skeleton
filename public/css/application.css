@@ -19,6 +19,10 @@
   outline: none;
 }
 
+.error {
+  color: red;
+}
+
 footer {
     position: absolute;
     bottom: 0;
