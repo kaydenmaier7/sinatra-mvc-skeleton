@@ -25,6 +25,8 @@ helpers do
     return shortened_results
   end
 
+
+  # Subtracts from the MAX score
   def simple_rate(results_arr)
     result = MAX_SCORE
     results_arr.each_with_index do |trait, idx|
@@ -39,19 +41,35 @@ helpers do
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
       end
     end
-    result.round(2)
+    return result.round(2)
+  end
+
+  def slide_rate(slides_arr, current_score)
+    negative_questions = ["I'll Swallow You Whole",
+                          "Revenge",
+                          "I Could Hurt You"]
+    positive_questions = ["All Must Be Equal"]
+
+    slides_arr.each do |slide|
+      if negative_questions.include?(slide.caption) && slide.response
+        current_score -= 2
+      elsif positive_questions.include?(slide.caption) && !slide.response
+        current_score -= 1
+      elsif positive_questions.include?(slide.caption) && slide.response
+        current_score += 1
+      end
+    end
+    return current_score
   end
 
   def traitify_results
 
     access = User.traitify_access
-
     results = access.find_results(assessment.key)
-
+    slides = access.find_slides(assessment.key)
     short_results = shorten(results)
 
-    simple_rate(short_results)
-
+    return slide_rate(slides, simple_rate(short_results) )
   end
 
 end
