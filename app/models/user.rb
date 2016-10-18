@@ -1,24 +1,48 @@
 require 'bcrypt'
+require 'traitify'
 
 class User < ActiveRecord::Base
-  # users.password_hash in the database is a :string
-  include BCrypt
+  include BCrypt, Traitify
 
-	validates_presence_of :first_name
-  validates_presence_of :last_name
-  validates_presence_of :username
-  validates_uniqueness_of :username
-  validates_presence_of :password
-  validates_presence_of :email
-  validates_uniqueness_of :email
-  
+  has_many :assessments
+
+  validates :username, :email, :hashed_password, { presence: true }
+  validates :email, { uniqueness: true }
+  validates :email, format: { with: /^[a-zA-Z0-9]+.?[a-zA-Z0-9]*@[a-zA-Z0-9]*.?[a-zA-Z0-9]*.[a-zA-Z]{2,}.?[a-zA-Z]{2,}/, multiline: true }
+
   def password
-    @password ||= Password.new(password_hash)
+    @password ||= Password.new(hashed_password)
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
-    self.password_hash = @password
+    self.hashed_password = Password.create(new_password)
+  end
+
+  def self.authenticate( email, password )
+
+    user = User.find_by(email: email.strip)
+    if user && (user.password == password)
+      return user
+    end
+      return nil
+  end
+
+  def self.authenticate_by_username( username, password )
+
+    user = User.find_by(username: username.strip)
+    if user && (user.password == password)
+      return user
+    end
+      return nil
+  end
+
+  def self.traitify_access
+    traitify = Traitify.new(
+      host: "https://api-sandbox.traitify.com",
+      version: "v1",
+      secret_key: ENV['SECRET']
+    )
+    return traitify
   end
 
 end
