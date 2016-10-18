@@ -1,6 +1,7 @@
 helpers do
 
   MAX_SCORE = 100;
+  EMPLOYER_REQS = ["Closer", "Evangelist", "Charmer", "Shark"]
 
   def assessment
     if logged_in?
@@ -22,8 +23,12 @@ helpers do
   end
 
   def rate_short_results(results_arr)
-
-    return MAX_SCORE - 1
+    result = MAX_SCORE
+    results_arr.each_with_index do |trait, idx|
+      if !EMPLOYER_REQS.include?(trait.first) && idx < EMPLOYER_REQS.length
+        p "here"
+      end
+    end
 
   end
 
