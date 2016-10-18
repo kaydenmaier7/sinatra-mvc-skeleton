@@ -1,3 +1,5 @@
 class Assessment < ActiveRecord::Base
-  # Remember to create a migration!
+
+  validates :user_id, :name, :key, { presence: true }
+
 end
