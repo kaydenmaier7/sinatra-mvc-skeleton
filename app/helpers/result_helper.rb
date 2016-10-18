@@ -31,9 +31,8 @@ helpers do
         multiplier = (idx * 0.2)
         result -= DEDUCT_POINT * multiplier + (trait[1] * TRAIT_SCORE_MULT)
       end
-      result
     end
-
+    result
   end
 
   def traitify_results
