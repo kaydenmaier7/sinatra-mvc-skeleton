@@ -8,7 +8,7 @@
               Traitify.setPublicKey('<%= ENV['PUBLIC'] %>');
               Traitify.setHost("https://api-sandbox.traitify.com");
               Traitify.setVersion("v1");
-              var assessmentId = '<%= current_user.assessments[0].key %>';
+              var assessmentId = '<%= current_user.assessments.find_by(name: 'Persuasion').key %>';
               Traitify.ui.load(assessmentId, ".assessment")
         </script>
       </div>
