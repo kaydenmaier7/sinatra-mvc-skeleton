@@ -28,5 +28,9 @@ end
 # USERS SHOW
 get '/users/:id' do
   @user = User.find(params[:id])
+  if request.xhr?
+    "You have finished this assessment. You will be redirected."
+  else
     erb :'users/show'
+  end
 end
