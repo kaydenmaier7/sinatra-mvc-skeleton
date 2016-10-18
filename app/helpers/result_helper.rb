@@ -4,7 +4,7 @@ helpers do
   NEG_TRAIT_SCORE_MULT = 0.125
   POS_TRAIT_SCORE_MULT = 0.1
   DEDUCT_POINT = 5
-  EMPLOYER_REQS = ["Closer", "Evangelist", "Charmer", "Shark"]
+  EMPLOYER_REQS = ["Politician", "Charmer", "Closer", "Evangelist"]
 
   def assessment
     if logged_in?
@@ -25,13 +25,14 @@ helpers do
     return shortened_results
   end
 
-  def rate_short_results(results_arr)
+  def simple_rate(results_arr)
     result = MAX_SCORE
     results_arr.each_with_index do |trait, idx|
-      multiplier = (idx * 0.2)
-      if !EMPLOYER_REQS.include?(trait.first) && idx <= EMPLOYER_REQS.length
+      if !EMPLOYER_REQS.include?(trait.first) && idx < EMPLOYER_REQS.length
+        multiplier = (idx * 0.2)
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
-      else
+      elsif EMPLOYER_REQS.include?(trait.first) && idx < EMPLOYER_REQS.length
+        multiplier = (EMPLOYER_REQS.index(trait.first) - idx).abs * 0.2
         result -= ((MAX_SCORE - trait[1]) * POS_TRAIT_SCORE_MULT) * multiplier
       end
     end
@@ -46,7 +47,7 @@ helpers do
 
     short_results = shorten(results)
 
-    rate_short_results(short_results)
+    simple_rate(short_results)
 
   end
 
