@@ -4,6 +4,7 @@ class CreateAssessments < ActiveRecord::Migration
       t.integer :user_id
       t.string :name, { limit: 128 }
       t.string :key, { limit: 64 }
+      t.boolean :completed, default: false
 
       t.timestamps(null: false)
     end
