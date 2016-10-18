@@ -14,7 +14,7 @@ post '/users' do
       traitify = User.traitify_access.create_assessment(deck_id: 'persuasion')
       Assessment.create(user_id: @user.id, name: 'Persuasion', key: traitify.id)
       session[:id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/"
     else
       @errors = "Something went wrong. Please try again."
       erb :'users/new'
