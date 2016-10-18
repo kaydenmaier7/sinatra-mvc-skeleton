@@ -28,9 +28,5 @@ end
 # USERS SHOW
 get '/users/:id' do
   @user = User.find(params[:id])
-  if request.xhr?
-    "success"
-  else
     erb :'users/show'
-  end
 end
