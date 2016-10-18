@@ -20,7 +20,8 @@
                 .done(function(response) {
                   setTimeout(function() {
                     alert(response);
-                    console.log( $('#nav-online') );
+                    htmlString = "<h4>Click Here to View Your Results</h4>";
+                    $( '#nav-online' ).append(htmlString);
                   }, 2000);
                 })
               })
