@@ -1,7 +1,8 @@
 require 'bcrypt'
+require 'traitify'
 
 class User < ActiveRecord::Base
-  include BCrypt
+  include BCrypt, Traitify
 
   has_many :assessments
 
@@ -33,6 +34,15 @@ class User < ActiveRecord::Base
       return user
     end
       return nil
+  end
+
+  def self.traitify_access
+    traitify = Traitify.new(
+      host: "https://api-sandbox.traitify.com",
+      version: "v1",
+      secret_key: ENV['SECRET']
+    )
+    return traitify
   end
 
 end
