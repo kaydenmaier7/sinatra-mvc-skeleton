@@ -32,7 +32,7 @@ helpers do
         result -= DEDUCT_POINT * multiplier + (trait[1] * TRAIT_SCORE_MULT)
       end
     end
-    result
+    result.round(2)
   end
 
   def traitify_results
