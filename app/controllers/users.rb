@@ -11,8 +11,10 @@ post '/users' do
     @user = User.new(params[:user])
 
     if @user.save
+      traitify = User.traitify_access.create_assessment(deck_id: 'persuasion')
+      Assessment.create(user_id: @user.id, name: 'Persuasion', key: traitify.id)
       session[:id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/"
     else
       @errors = "Something went wrong. Please try again."
       erb :'users/new'
@@ -28,5 +30,13 @@ end
 # USERS SHOW
 get '/users/:id' do
   @user = User.find(params[:id])
-  erb :'users/show'
+  if request.xhr? && !@user.assessments.find_by(name: 'Persuasion').completed
+    assessment_id = @user.assessments.find_by(name: 'Persuasion').id
+    Assessment.update(assessment_id, completed: true)
+    "Assessment finished. Good luck."
+  elsif request.xhr?
+    "Assessment finished! Good luck."
+  else
+    erb :'users/show'
+  end
 end
