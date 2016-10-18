@@ -9,14 +9,20 @@
               var assessmentKey = '<%= current_user.assessments.find_by(name: 'Persuasion').key %>';
               Traitify.setPublicKey('<%= ENV['PUBLIC'] %>');
               Traitify.setHost("https://api-sandbox.traitify.com");
-              Traitify.setVersion("v1")
+              Traitify.setVersion("v1");
 
               traitify = Traitify.ui.load(assessmentKey, ".assessment",{slideDeck: {showResults: true}})
               traitify.slideDeck.onFinished(function(){
-                setTimeout(function() {
-                  alert("Assessment finished. Redirection imminent.");
-                  $(location).attr('href', '/users/' + '<%= current_user.id %>');
-                }, 2000);
+                $.ajax({
+                  url: '/users/' + '<%= current_user.id %>',
+                  method: 'GET'
+                })
+                .done(function(response) {
+                  setTimeout(function() {
+                    alert(response);
+                    $(location).attr('href', '/users/' + '<%= current_user.id %>');
+                  }, 2000);
+                })
               })
         </script>
       </div>
