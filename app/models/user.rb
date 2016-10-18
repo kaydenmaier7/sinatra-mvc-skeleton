@@ -2,7 +2,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   include BCrypt
-  # Remember to create a migration!
+
+  has_many :assessments
 
   validates :username, :email, :hashed_password, { presence: true }
   validates :email, { uniqueness: true }
