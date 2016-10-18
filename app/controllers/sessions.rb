@@ -4,15 +4,16 @@ end
 
 
 post '/sessions' do
-  @user = User.find_by_email(params[:email])
+  @user = User.authenticate(params[:email], params[:password])
+  if !@user
+    @user = User.authenticate_by_username(params[:username], params[:password])
+  end
 
-  if @user && @user.password == params[:password]
-    # session[:id] = @user.id
+  if @user
     login(@user)
     redirect '/'
-
   else
-    @errors = ["Username && Password not found."]
+    @errors = "User details didn't match anything on record"
     erb :'sessions/new'
   end
 end
@@ -22,6 +23,6 @@ end
 # delete '/sessions/:id' do
 delete '/sessions' do
   # session[:id] = nil
-  logout 
+  logout
   redirect '/'
 end

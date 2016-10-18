@@ -1,7 +1,12 @@
-<h1>USERS SHOW / PROFILE PAGE</h1>
-<h2>get '/users/:id'</h2>
-
 <% if current_user %>
-  <h2>Welcome <%= current_user.username %>!</h2>
+<div class='center-align'>
+  <a class='button' href="/users/<%= current_user.id %> ">Profile Page</a>
+</div>
 
+<footer class='center-no-pad'>
+    <form class='button' action="/sessions" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Logout">
+    </form>
+</footer>
 <% end %>
