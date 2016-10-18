@@ -31,9 +31,9 @@ get '/users/:id' do
   if request.xhr? && !@user.assessments.find_by(name: 'Persuasion').completed
     assessment_id = @user.assessments.find_by(name: 'Persuasion').id
     Assessment.update(assessment_id, completed: true)
-    "You have finished this assessment. You will be redirected."
+    "Assessment finished. Good luck."
   elsif request.xhr?
-    "You have finished this assessment. You will be redirected."
+    "Assessment finished! Good luck."
   else
     erb :'users/show'
   end
