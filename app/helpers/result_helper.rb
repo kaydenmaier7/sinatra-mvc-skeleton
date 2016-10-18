@@ -48,7 +48,8 @@ helpers do
     negative_questions = ["I'll Swallow You Whole",
                           "Revenge",
                           "I Could Hurt You"]
-    positive_questions = ["All Must Be Equal"]
+    positive_questions = ["All Must Be Equal",
+                          "I'm Working For You"]
 
     slides_arr.each do |slide|
       if negative_questions.include?(slide.caption) && slide.response
