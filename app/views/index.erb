@@ -3,15 +3,15 @@
       <div class='center-align'>
         <a class='button' href="/users/<%= current_user.id %> ">Profile Page</a>
       </div>
-      <div class="assessment"></div>
-
-      <script>
-            Traitify.setPublicKey('<%= ENV['PUBLIC'] %>');
-            Traitify.setHost("https://api-sandbox.traitify.com");
-            Traitify.setVersion("v1");
-            var assessmentId = '<%= current_user.assessments[0].key %>';
-            Traitify.ui.load(assessmentId, ".assessment")
-      </script>
+      <div class="assessment">
+        <script>
+              Traitify.setPublicKey('<%= ENV['PUBLIC'] %>');
+              Traitify.setHost("https://api-sandbox.traitify.com");
+              Traitify.setVersion("v1");
+              var assessmentId = '<%= current_user.assessments[0].key %>';
+              Traitify.ui.load(assessmentId, ".assessment")
+        </script>
+      </div>
       <footer class='center-no-pad'>
           <form class='button' action="/sessions" method="POST">
             <input type="hidden" name="_method" value="DELETE">
