@@ -11,16 +11,10 @@
               Traitify.setHost("https://api-sandbox.traitify.com");
               Traitify.setVersion("v1");
 
-              traitify = Traitify.ui.load(assessmentKey, ".assessment",{slideDeck: {showResults: false}})
+              traitify = Traitify.ui.load(assessmentKey, ".assessment",{slideDeck: {showResults: true}})
               traitify.slideDeck.onFinished(function(){
-                  $.ajax({
-                    url: '/users/:id',
-                    method: 'GET'
-                  })
-                  .done(function(response) {
-                  })
+                  location.reload();
               })
-              Traitify.ui.load(assessmentKey, ".assessment")
         </script>
       </div>
       <footer class='center-no-pad'>
