@@ -11,6 +11,8 @@ post '/users' do
     @user = User.new(params[:user])
 
     if @user.save
+      traitify = User.traitify_access.create_assessment(deck_id: 'persuasion')
+      Assessment.create(@user.id, name: 'Persuasion', key: traitify.id)
       session[:id] = @user.id
       redirect "/users/#{@user.id}"
     else
