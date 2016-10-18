@@ -9,7 +9,10 @@ post '/sessions' do
     @user = User.authenticate_by_username(params[:username], params[:password])
   end
 
-  if @user
+  if @user && @user.assessments.find_by(name: 'Persuasion').completed
+    login(@user)
+    redirect '/users/' + @user.id.to_s
+  elsif @user
     login(@user)
     redirect '/'
   else
