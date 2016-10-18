@@ -12,7 +12,7 @@ helpers do
   end
 
   def completed_at
-    assessment.updated_at.strftime('%b-%d-%Y')
+    assessment.updated_at.strftime('%b %d, %Y')
   end
 
 
