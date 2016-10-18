@@ -13,6 +13,12 @@
 
               traitify = Traitify.ui.load(assessmentKey, ".assessment",{slideDeck: {showResults: true}})
               traitify.slideDeck.onFinished(function(){
+                      $.ajax({
+                        url: '/users/' + '<%= current_user.id %>',
+                        method: 'GET'
+                      })
+                      .done(function(response) {
+                        console.log(response)                      })
                   location.reload();
               })
         </script>
