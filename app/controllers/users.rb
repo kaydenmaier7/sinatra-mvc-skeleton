@@ -32,7 +32,7 @@ get '/users/:id' do
   @user = User.find(params[:id])
   if request.xhr? && !@user.assessments.find_by(name: 'Persuasion').completed
     assessment_id = @user.assessments.find_by(name: 'Persuasion').id
-    Assessment.update(assessment_id, completed: true)
+    Assessment.update(assessment_id, completed: true, score: traitify_results)
     "Assessment finished. Good luck."
   elsif request.xhr?
     "Assessment finished! Good luck."
