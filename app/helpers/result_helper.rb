@@ -29,11 +29,14 @@ helpers do
     result = MAX_SCORE
     results_arr.each_with_index do |trait, idx|
       if !EMPLOYER_REQS.include?(trait.first) && idx < EMPLOYER_REQS.length
-        multiplier = (idx * 0.2)
+        multiplier = 1 - (idx * 0.2)
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
-      elsif EMPLOYER_REQS.include?(trait.first) && idx < EMPLOYER_REQS.length
+      elsif EMPLOYER_REQS.include?(trait.first)
         multiplier = (EMPLOYER_REQS.index(trait.first) - idx).abs * 0.2
         result -= ((MAX_SCORE - trait[1]) * POS_TRAIT_SCORE_MULT) * multiplier
+      else
+        multiplier = (results_arr.length - idx) * 0.2
+        result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
       end
     end
     result.round(2)
