@@ -1,20 +1,15 @@
 def sort_db
 
-  arr = Assessment.all
+  elements = Assessment.all
 
-  sorted_results = arr.sort_by { |item| [item.score ? 0 : 1, item.score || 0] }
-
-  sorted_results.reverse!
+  elements = elements.select { |element| !element.score.nil? }
+  sorted_results = elements.sort_by { |item| -item.score }
 
   sorted_results.each do |res|
-
-    if res.score
-      user = User.find(res.id)
-      p user.username + ' got a ' + res.score.to_s
-      p user.email
-      p "*" * 20
-    end
-
+    user = User.find(res.id)
+    p user.username.to_s + ' got a ' + res.score.to_s
+    p user.email.to_s
+    p "*" * 20
   end
 
   nil
