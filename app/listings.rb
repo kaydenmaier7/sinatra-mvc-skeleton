@@ -1,4 +1,6 @@
-def database_pretty
+def sort_db
+
+  arr = Assessment.all
 
   sorted_results = arr.sort_by { |item| [item.score ? 0 : 1, item.score || 0] }
 
@@ -14,6 +16,8 @@ def database_pretty
     end
 
   end
+
+  nil
 
 end
 
