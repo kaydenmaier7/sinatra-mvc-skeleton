@@ -1,4 +1,4 @@
-def database_pretty(arr)
+def database_pretty
 
   sorted_results = arr.sort_by { |item| [item.score ? 0 : 1, item.score || 0] }
 
