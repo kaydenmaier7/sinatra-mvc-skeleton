@@ -16,7 +16,7 @@ post '/sessions' do
     login(@user)
     redirect '/'
   else
-    @errors = "User details didn't match anything on record"
+    @errors = login_errors(params)
     erb :'sessions/new'
   end
 end

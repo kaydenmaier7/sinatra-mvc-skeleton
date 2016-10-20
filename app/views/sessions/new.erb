@@ -3,7 +3,7 @@
   <% if @errors %>
     <h2 class='error'><%= @errors %></h2>
   <% else %>
-    <h3>Please type in your username OR e-mail and password</h3>
+    <h3>Please type in your username <strong>or</strong> e-mail and password</h3>
   <% end %>
 
   <form action="/sessions" method="POST">
