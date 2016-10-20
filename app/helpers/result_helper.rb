@@ -2,6 +2,7 @@ helpers do
 
   MAX_SCORE = 100
   NEG_TRAIT_SCORE_MULT = 0.125
+  # Original base score: 0.10
   POS_TRAIT_SCORE_MULT = 0.05
   DEDUCT_POINT = 5
   EMPLOYER_REQS = ["Politician", "Charmer", "Closer", "Evangelist"]
@@ -34,6 +35,8 @@ helpers do
         multiplier = 1 - (idx * 0.2)
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
       elsif EMPLOYER_REQS.include?(trait.first)
+        # Original didn't have plus(1), added since we weren't reducing results.
+        # Same goes for the else branch.
         multiplier = (EMPLOYER_REQS.index(trait.first) - idx + 1).abs * 0.2
         result -= ((MAX_SCORE - trait[1]) * POS_TRAIT_SCORE_MULT) * multiplier
       else
