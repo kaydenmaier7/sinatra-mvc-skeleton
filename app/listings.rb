@@ -21,3 +21,4 @@ def sort_db
 
 end
 
+sort_db
