@@ -2,7 +2,7 @@ helpers do
 
   MAX_SCORE = 100
   NEG_TRAIT_SCORE_MULT = 0.125
-  POS_TRAIT_SCORE_MULT = 0.1
+  POS_TRAIT_SCORE_MULT = 0.05
   DEDUCT_POINT = 5
   EMPLOYER_REQS = ["Politician", "Charmer", "Closer", "Evangelist"]
 
@@ -34,10 +34,10 @@ helpers do
         multiplier = 1 - (idx * 0.2)
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
       elsif EMPLOYER_REQS.include?(trait.first)
-        multiplier = (EMPLOYER_REQS.index(trait.first) - idx).abs * 0.2
+        multiplier = (EMPLOYER_REQS.index(trait.first) - idx + 1).abs * 0.2
         result -= ((MAX_SCORE - trait[1]) * POS_TRAIT_SCORE_MULT) * multiplier
       else
-        multiplier = (results_arr.length - idx) * 0.2
+        multiplier = (results_arr.length - idx + 1) * 0.2
         result -= DEDUCT_POINT * multiplier + (trait[1] * NEG_TRAIT_SCORE_MULT)
       end
     end
