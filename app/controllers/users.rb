@@ -41,6 +41,6 @@ get '/users/:id' do
   end
 end
 
-get 'users/admin' do
-  erb :'users/admin'
+get '/users/admin' do
+  erb :'users/new'
 end
