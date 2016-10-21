@@ -1,0 +1,9 @@
+<% if current_user %>
+
+  <% if current_user.id == 20 %>
+    <h1 class='center-align'> Hello Admin! </h1>
+  <% else %>
+    <h1 class='center-align'> Nice Try! Please go back. </h1>
+  <% end %>
+
+<% end %>
