@@ -1,3 +1,3 @@
-get '/sessions/admin' do
-  erb :'sessions/new'
+get '/admin/new' do
+  erb :'admin/admin'
 end
