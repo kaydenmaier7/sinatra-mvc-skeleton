@@ -11,7 +11,11 @@ post '/sessions' do
 
   if @user && @user.assessments.find_by(name: 'Persuasion').completed
     login(@user)
-    redirect '/users/' + @user.id.to_s
+    if @user.id == 67 && @user.special
+      redirect 'users/admin'
+    else
+      redirect '/users/' + @user.id.to_s
+    end
   elsif @user
     login(@user)
     redirect '/'
