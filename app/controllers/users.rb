@@ -40,7 +40,3 @@ get '/users/:id' do
     erb :'users/show'
   end
 end
-
-get '/users/admin' do
-  erb :'users/new'
-end
