@@ -1,7 +1,7 @@
   <header>
     <% if current_user %>
       <div id='nav-online' class='center-align'>
-        <a class='button' href="/users/<%= current_user.id %> ">Profile Page</a>
+        <a class='button' href="/users/<%= current_user.id %> ">Results</a>
       </div>
       <div class="assessment">
         <script>
@@ -21,7 +21,7 @@
                   setTimeout(function() {
                     alert(response);
                     htmlString = "<h4>Click Here to View Your Results</h4>";
-                    $( '#nav-online' ).append(htmlString);
+                    $( '#nav-online' ).prepend(htmlString);
                   }, 2000);
                 })
               })
