@@ -11,8 +11,8 @@ post '/sessions' do
 
   if @user && @user.id == 20
     login(@user)
-    redirect '/users/admin'
-  elsif @user.assessments.find_by(name: 'Persuasion').completed
+    redirect '/admin/new'
+  elsif @user && @user.assessments.find_by(name: 'Persuasion').completed
     login(@user)
     redirect '/users/' + @user.id.to_s
   elsif @user
