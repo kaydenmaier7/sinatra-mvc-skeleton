@@ -1,0 +1,12 @@
+<% if current_user %>
+
+  <% if current_user.id == 20 %>
+    <h1 class='center-align'> Hello Admin! </h1>
+  <% else %>
+    <script type="text/javascript">
+      window.location.replace("https://personality-analyzer.herokuapp.com/");
+    </script>
+    <noscript><h1 class='center-align'> Nice Try! Please go back. </h1></noscript>
+  <% end %>
+
+<% end %>

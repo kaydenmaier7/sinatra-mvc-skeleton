@@ -1,0 +1,29 @@
+.center-align {
+  text-align: center;
+  font-size: 2em;
+  padding: 60px;
+}
+
+.center-no-pad {
+  text-align: center;
+}
+
+.button {
+  margin: 3em auto;
+  padding: 1em;
+  width: 100%;
+  max-width: 60%;
+  border-radius: .5em;
+  background-color: lightblue;
+  outline: none;
+}
+
+.error {
+  color: red;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
