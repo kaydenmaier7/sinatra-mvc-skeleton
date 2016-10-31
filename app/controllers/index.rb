@@ -1,3 +1,3 @@
 get '/' do
-  erb :index
+  redirect 'users/new'
 end
