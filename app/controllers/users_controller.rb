@@ -14,7 +14,8 @@ end
 # USERS CREATE
 post '/users' do
 
-  if params[:password_confirmation] == params[:user][:password]
+  if params[:password_confirmation] == params[:user][:password] && params[:user][:password] != ""
+  
     @user = User.new(params[:user])
 
     if @user.save
