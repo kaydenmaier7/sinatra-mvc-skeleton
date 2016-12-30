@@ -1,8 +1,9 @@
+#LOG IN {Generate Page}
 get '/sessions/new' do
   erb :'sessions/new'
 end
 
-
+#LOG IN {Submit Page}
 post '/sessions' do
   @user = User.find_by_email(params[:email])
 
@@ -18,10 +19,10 @@ post '/sessions' do
 end
 
 
-
+# LOG OUT
 # delete '/sessions/:id' do
 delete '/sessions' do
   # session[:id] = nil
-  logout 
+  logout
   redirect '/'
 end
